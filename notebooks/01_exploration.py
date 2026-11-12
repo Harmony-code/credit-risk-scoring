@@ -1,7 +1,12 @@
 import pandas as pd
 from pathlib import Path
+
+# Charger le jeu de données
 file_path = Path("data/raw/cs-training.csv")
 df=pd.read_csv(file_path)
+
+#Supprimer la colonne 'Unnamed: 0' si elle existe
+df = df.loc[:, ~df.columns.str.contains('^Unnamed')]    
 print("donées chargées avec succès")
 
 print("Dimensions du jeu de données:", df.shape)
